@@ -4,6 +4,7 @@ import aboutUs from './components/about-us.vue';
 import firstConsultation from './components/first-consultation.vue';
 import ourCouch from './components/our-couch.vue';
 import advantagesBlock from './components/advantages-block.vue';
+import ourStory from './components/our-story.vue';
 </script>
 
 <template>
@@ -15,6 +16,7 @@ import advantagesBlock from './components/advantages-block.vue';
     <firstConsultation></firstConsultation>
     <ourCouch></ourCouch>
     <advantagesBlock></advantagesBlock>
+    <ourStory></ourStory>
   </main>
 </template>
 
@@ -41,7 +43,6 @@ import advantagesBlock from './components/advantages-block.vue';
   letter-spacing: -0.34px;
   color: #1E1E1E;
   text-align: center;
-  margin-bottom: 1.25rem;
   cursor: pointer;
   display: block;
   text-decoration: none;

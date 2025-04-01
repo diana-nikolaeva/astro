@@ -39,6 +39,7 @@
   #1E1E1E;
   padding: 2.5rem 0;
   position: relative;
+  margin-bottom: 2.5rem;
 }
 .status{
   position: absolute;

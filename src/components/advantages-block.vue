@@ -18,6 +18,9 @@
 .carousel-advantage{
   margin: 2rem 0;
 }
+h2{
+  color:black
+}
 .advantage-item{
   padding: 24px 16px;
   border-radius: 20px;
