@@ -2,6 +2,8 @@
 import mainBanner from './components/main-banner.vue';
 import aboutUs from './components/about-us.vue';
 import firstConsultation from './components/first-consultation.vue';
+import ourCouch from './components/our-couch.vue';
+import advantagesBlock from './components/advantages-block.vue';
 </script>
 
 <template>
@@ -11,6 +13,8 @@ import firstConsultation from './components/first-consultation.vue';
   <main>
     <aboutUs></aboutUs>
     <firstConsultation></firstConsultation>
+    <ourCouch></ourCouch>
+    <advantagesBlock></advantagesBlock>
   </main>
 </template>
 
