@@ -5,6 +5,8 @@ import firstConsultation from './components/first-consultation.vue';
 import ourCouch from './components/our-couch.vue';
 import advantagesBlock from './components/advantages-block.vue';
 import ourStory from './components/our-story.vue';
+import saleBlock from './components/sale-block.vue';
+import footerBlock from './components/footer-block.vue';
 </script>
 
 <template>
@@ -17,7 +19,11 @@ import ourStory from './components/our-story.vue';
     <ourCouch></ourCouch>
     <advantagesBlock></advantagesBlock>
     <ourStory></ourStory>
+    <saleBlock></saleBlock>
   </main>
+  <footer>
+    <footerBlock></footerBlock>
+  </footer>
 </template>
 
 <style>
