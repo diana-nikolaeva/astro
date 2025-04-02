@@ -7,6 +7,20 @@ import advantagesBlock from './components/advantages-block.vue';
 import ourStory from './components/our-story.vue';
 import saleBlock from './components/sale-block.vue';
 import footerBlock from './components/footer-block.vue';
+import { onMounted, onBeforeUnmount, ref } from 'vue'
+
+const isPhone = ref()
+
+if (typeof window !== 'undefined') {
+  const onResize = () => {
+    isPhone.value = window.innerWidth <= 800
+  }
+
+  onMounted(() => window.addEventListener('resize', onResize))
+  onBeforeUnmount(() => window.removeEventListener('resize', onResize))
+  onResize()
+}
+
 </script>
 
 <template>
@@ -57,6 +71,10 @@ import footerBlock from './components/footer-block.vue';
   cursor: pointer;
   display: block;
   text-decoration: none;
+  @media screen and (min-width:800px){
+    max-width: 19.375rem;
+    margin: 0 auto;
+  }
 }
 .btn.pink{
   background: #E23065;

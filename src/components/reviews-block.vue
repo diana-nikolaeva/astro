@@ -1,50 +1,4 @@
 <script setup lang="ts">
-document.addEventListener('DOMContentLoaded', function () {
-  const container = document.querySelector('.carousel-container') as HTMLDivElement;
-  const items = document.querySelectorAll('.carousel-item');
-  const dots = document.querySelectorAll('.carousel-dot');
-  const prevBtn = document.querySelector('.carousel-btn.prev');
-  const nextBtn = document.querySelector('.carousel-btn.next');
-
-  let currentIndex = 0;
-  const itemCount = items.length;
-
-  function updateCarousel() {
-    container!.style.transform = `translateX(-${currentIndex * 100}%)`;
-
-    // Обновляем активную точку
-    dots.forEach((dot, index) => {
-      dot.classList.toggle('active', index === currentIndex);
-    });
-  }
-
-  // Переход к следующему элементу
-  function nextSlide() {
-    currentIndex = (currentIndex + 1) % itemCount;
-    updateCarousel();
-  }
-
-  // Переход к предыдущему элементу
-  function prevSlide() {
-    currentIndex = (currentIndex - 1 + itemCount) % itemCount;
-    updateCarousel();
-  }
-
-  // Клик по точкам навигации
-  dots.forEach(dot => {
-    dot.addEventListener('click', function () {
-      currentIndex = parseInt(this.getAttribute('data-index'));
-      updateCarousel();
-    });
-  });
-
-  // Кнопки вперед/назад
-  nextBtn.addEventListener('click', nextSlide);
-  prevBtn.addEventListener('click', prevSlide);
-
-  // Автоматическое перелистывание (опционально)
-  // setInterval(nextSlide, 3000);
-});
 </script>
 <template>
   <div class="carousel">
@@ -147,15 +101,6 @@ document.addEventListener('DOMContentLoaded', function () {
       </div>
     </div>
   </div>
-
-  <button class="carousel-btn prev">❮</button>
-  <button class="carousel-btn next">❯</button>
-
-  <div class="carousel-nav">
-    <div class="carousel-dot active" data-index="0"></div>
-    <div class="carousel-dot" data-index="1"></div>
-    <div class="carousel-dot" data-index="2"></div>
-  </div>
 </template>
 <style scoped>
 .review-item {
@@ -242,65 +187,19 @@ audio::-webkit-media-controls-time-remaining-display,
 audio::-webkit-media-controls-mute-button {
   display: none;
 }
-
-/* carousel */
-
-.carousel {
-  position: relative;
-  width: 100%;
-  max-width: 600px;
-  margin: 0 auto;
+.carousel-container{
+  @media screen and (min-width:800px) {
+    display: flex;
+  }
+}
+.carousel-item{
   overflow: hidden;
+  @media screen and (min-width:800px){
+    margin-right: 20px;
+    &:last-child{
+      margin-right: 0;
+    }
+  }
 }
 
-.carousel-container {
-  display: flex;
-  transition: transform 0.5s ease;
-}
-
-.carousel-item {
-  min-width: 100%;
-  box-sizing: border-box;
-  padding: 20px;
-  text-align: center;
-  border: 1px solid #ddd;
-}
-
-.carousel-nav {
-  display: flex;
-  justify-content: center;
-  margin-top: 10px;
-}
-
-.carousel-dot {
-  width: 12px;
-  height: 12px;
-  margin: 0 5px;
-  border-radius: 50%;
-  background: #bbb;
-  cursor: pointer;
-}
-
-.carousel-dot.active {
-  background: #333;
-}
-
-.carousel-btn {
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
-  background: rgba(0, 0, 0, 0.5);
-  color: white;
-  border: none;
-  padding: 10px;
-  cursor: pointer;
-}
-
-.carousel-btn.prev {
-  left: 10px;
-}
-
-.carousel-btn.next {
-  right: 10px;
-}
 </style>

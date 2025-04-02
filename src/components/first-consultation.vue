@@ -101,6 +101,13 @@ h2{
 }
 .content{
   margin: 2rem 0;
+  color: #131314;
+  font-size: 17px;
+  text-align: center;
+  @media screen and (min-width:800px) {
+    width: 60%;
+    margin: 2rem auto;
+  }
 }
 .pink{
   margin-bottom: 3rem;
