@@ -1,6 +1,6 @@
 <template>
   <div class="banner-container">
-    <div class="container">
+    <div class="container main-banner">
       <div class="logo-container">
         <div class="logo">
           <img src="../assets/icons/logo.svg" alt="logo company">
@@ -24,6 +24,12 @@
 .banner-container {
   background:radial-gradient(116.56% 60.56% at 100% 0%, rgba(192, 37, 83, 0.40) 8.09%, rgba(192, 37, 83, 0.36) 21.09%, rgba(192, 37, 83, 0.00) 100%),
   #1E1E1E
+}
+.main-banner{
+  @media screen and (min-width:800px){
+    padding: 0 7.5rem;
+  }
+
 }
 .banner-columnns{
   @media screen and (min-width:800px){

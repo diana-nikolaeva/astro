@@ -9,11 +9,11 @@ import saleBlock from './components/sale-block.vue';
 import footerBlock from './components/footer-block.vue';
 import { onMounted, onBeforeUnmount, ref } from 'vue'
 
-const isPhone = ref()
+const isPhone = ref(true)
 
 if (typeof window !== 'undefined') {
   const onResize = () => {
-    isPhone.value = window.innerWidth <= 800
+    isPhone.value = window.innerWidth <= 1000
   }
 
   onMounted(() => window.addEventListener('resize', onResize))
@@ -30,8 +30,8 @@ if (typeof window !== 'undefined') {
   <main>
     <aboutUs></aboutUs>
     <firstConsultation></firstConsultation>
-    <ourCouch></ourCouch>
-    <advantagesBlock></advantagesBlock>
+    <ourCouch :is-phone="isPhone"></ourCouch>
+    <advantagesBlock :is-phone="isPhone"></advantagesBlock>
     <ourStory></ourStory>
     <saleBlock></saleBlock>
   </main>
@@ -55,10 +55,15 @@ if (typeof window !== 'undefined') {
   padding: 0 1rem;
   max-width: 90rem;
   margin: 0 auto;
-  @media screen and (min-width:800px){
-    padding: 0 7.5rem;
+
+  @media screen and (min-width:800px) {
+    padding: 0 3rem;
+  }
+  @media screen and (min-width:1440px) {
+    padding: 0 15rem;
   }
 }
+
 .btn {
   background: #fff;
   border-radius: 16px;
@@ -71,13 +76,15 @@ if (typeof window !== 'undefined') {
   cursor: pointer;
   display: block;
   text-decoration: none;
-  @media screen and (min-width:800px){
+
+  @media screen and (min-width:800px) {
     max-width: 19.375rem;
     margin: 0 auto;
   }
 }
-.btn.pink{
+
+.btn.pink {
   background: #E23065;
-  color:#fff;
+  color: #fff;
 }
 </style>

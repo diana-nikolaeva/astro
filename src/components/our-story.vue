@@ -1,88 +1,59 @@
-<script setup>
+<script setup lang="ts">
 import CardService from './card-service.vue';
+import { Pagination as CarouselPagination } from 'vue3-carousel'
+import { Navigation as CarouselNavigation } from 'vue3-carousel'
+import { Carousel, Slide } from 'vue3-carousel';
+import { stories } from '@/assets/data/story';
+import storyItem from './story-item.vue';
+import { computed } from 'vue';
+const props = defineProps({ isPhone: Boolean });
+
+const itemsToShow = computed(() => props.isPhone ? 1 : 2);
 </script>
 <template>
   <section class="our-story">
     <div class="container">
+      <h2>Истории наших клиентов</h2>
       <div class="stories">
-        <div class="store-item">
-          <div class="question">
-            <div class="author-story">
-            <div class="photo">
-              <img src="../assets/images/avatar-reviews.jpg" alt="photo-author">
-            </div>
-            <div class="data-author">
-              <div class="name">Олеся</div>
-              <div class="age">38 лет</div>
-            </div>
-            </div>
-            <div class="story-content">
-              Я решила разводиться с мужем, нет сил и желания терпеть отношения. Муж меня не уважает, ни в чем не помогает, я тащу все на себе. Не понимаю сути отношений, если в них, я взваливаю двойную ношу проблем и отвечаю теперь за нас двоих. Слабо верю что люди меняются. Есть ли шанс сделать эти отношения другими?
-            </div>
-          </div>
+        <Carousel class="carousel-container" :items-to-show="itemsToShow" :gap="20">
+      <Slide v-for="slide in stories" :key="slide.name">
+        <storyItem :name="slide.name" :age="slide.age" :question="slide.question" :answer="slide.answer"></storyItem>
+      </Slide>
 
-          <div class="answer">
-          <h3>Отзыв клиента</h3>
-          <div class="answer-text">В очень трудной жизненной ситуации жизнь свела меня с Нонной. Несколько раз я обращалась за консультацией к этому эксперту. Видела мучительную для меня ситуацию не так, как мне говорила Нонна, я даже сомневалась сначала в ее словах. Но поверила и послушала ее совета! Я хотела подавать на развод, но Нонна все объяснила, как она видит, что необходимо сделать, что нас с мужем ждет в будущем. Я ей настолько поверила, что сделала так как она мне советовала. И результат! Моя семья не распалась, а наоборот сейчас, как заново рождена. Муж говорит мне «Спасибо тебе за мудрость, что не сделала ужасный для нашей семьи шаг.» А я говорю Нонне – от всего сердца примите мою благодарность, уважение за Ваш труд!</div>
-          <a class="also" href="/">еще</a>
-        </div>
-      </div>
+      <template #addons>
+        <CarouselPagination />
+        <CarouselNavigation />
+      </template>
+    </Carousel>
+
       <CardService></CardService>
       </div>
     </div>
   </section>
 </template>
 <style scoped>
-.store-item {
-  border-radius: 1.25rem;
-  border: 1px solid #E5E7E9;
+h2{
+  color:black;
+  margin-top: 80px;
+  margin-bottom: 32px;
 }
-.question{
-  padding: 1.5rem 1.25rem;
-}
-.author-story{
-  display: flex;
-}
-.photo {
-  width: 3.375rem;
-  height: 3.375rem;
-  border-radius: 40px;
-  margin-right: .75rem;
-  margin-bottom: 1rem;
-  overflow: hidden;
-}
-.name{
-  color:#131314;
-}
-.age{
-  color:#A8ADB4;
-}
-h3{
-  color:#E23065;
-  font-size: .9375rem;
-  font-weight: 600;
-  margin-bottom: 16px;
-}
-.answer-text{
-  height: 7.5rem;
-  overflow: hidden;
-  color:#131314
-}
-.story-content{
-  color: #131314;
-}
-.answer{
-  padding: 1.5rem 1.25rem;
-  background: #F5F6F6;
-  position: relative;
-}
-.also{
-  position: absolute;
-  bottom: 1.5rem;
-  right: 1rem;
-  background: linear-gradient(89deg, rgba(245, 246, 246, 0.00) 0.49%, #F5F6F6 26.04%);
-  color:#E23065;
-  width: 6.25rem;
-  text-align: right;
+</style>
+<style>
+.our-story{
+  .carousel__pagination{
+    bottom: -32px;
+  }
+  .carousel__pagination-button{
+    width: .5rem;
+    height: .5rem;
+    background-color: rgba(0, 0, 0, 0.20);
+    margin-right: .75rem;
+    border-radius: 5px;
+  }
+  .carousel__pagination-button--active{
+    width: 32px;
+    border-radius: 5px;
+    background-color:#E23065;
+  }
 }
 </style>

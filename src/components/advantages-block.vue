@@ -1,48 +1,68 @@
+<script setup lang="ts">
+import advantageItem from './advantage-item.vue';
+import { advantages } from '@/assets/data/advantage';
+import 'vue3-carousel/dist/carousel.css'
+import { Carousel, Slide } from 'vue3-carousel';
+import AdvantageItem from './advantage-item.vue';
+import { Pagination as CarouselPagination } from 'vue3-carousel'
+defineProps({ isPhone: Boolean });
+</script>
 <template>
   <section class="advantages">
     <div class="container">
       <h2>Ощутите преимущества консультаций с тарологами Astro7</h2>
-    <div class="carousel carousel-advantage">
-      <div class="advantage-item">
-        <div class="advantage-icon">
-          <img src="../assets/icons/shield.svg" alt="icon advantage">
-        </div>
-        <div class="title-advantage">Защита от мошенников</div>
-        <div class="descr-advantage">Наша компания работает уже 14 лет и бережёт свою репутацию. А значит, оплаченная консультация 100% состоится. Каждый эксперт проверен, поэтому мы ручаемся за качество. Иначе вернём деньги!</div>
-    </div>
-    </div>
+      <Carousel v-if="isPhone">
+        <Slide v-for="slide in advantages" :key="slide.title">
+          <AdvantageItem :icon="slide.icon" :title="slide.title" :description="slide.description"></AdvantageItem>
+        </Slide>
+        <template #addons>
+        <CarouselPagination />
+      </template>
+      </Carousel>
+
+      <div class="carousel carousel-advantage" v-else>
+        <advantageItem :icon="item.icon" :title="item.title" :description="item.description" class="advantage-block"
+          v-for="item in advantages" :key="item.title"></advantageItem>
+      </div>
     </div>
   </section>
 </template>
 <style scoped>
-.carousel-advantage{
+.carousel-advantage {
   margin: 2rem 0;
 }
-h2{
-  color:black
+
+h2 {
+  color: black
 }
-.advantage-item{
-  padding: 24px 16px;
-  border-radius: 20px;
-  border: 1px solid rgba(0, 16, 36, 0.10);
+
+.carousel-advantage {
+  display: grid;
+  grid-template-columns: auto auto;
+  grid-gap: 1.25rem;
 }
-.advantage-icon{
-  width: 54px;
-  height: 54px;
-  border-radius: 41.481px;
-  background: rgba(0, 16, 36, 0.04);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin: 0 auto;
-  margin-bottom: 1.125rem;
+
+.advantage-block {
+  height: 100%;
 }
-.title-advantage{
-  color: black;
-  text-align: center;
-}
-.descr-advantage{
-  color:#A8ADB4;
-  text-align: center;
+</style>
+<style>
+.advantages{
+  .carousel__pagination{
+    bottom: -32px;
+  }
+  .carousel__pagination-button{
+    width: .5rem;
+    height: .5rem;
+    background-color: rgba(0, 0, 0, 0.20);
+    margin-right: .75rem;
+    border-radius: 5px;
+  }
+  .carousel__pagination-button--active{
+    width: 32px;
+    border-radius: 5px;
+    background-color:#E23065;
+  }
+
 }
 </style>

@@ -14,6 +14,9 @@
   border-radius: 1rem;
   margin-top: 3rem;
   margin-bottom: 2.5rem;
+  @media screen and (min-width:800px){
+    margin-top: 4.5rem;
+  }
 }
 .service{
   display: flex;
