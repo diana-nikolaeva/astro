@@ -39,6 +39,11 @@ import footerBlock from './components/footer-block.vue';
 
 .container {
   padding: 0 1rem;
+  max-width: 90rem;
+  margin: 0 auto;
+  @media screen and (min-width:800px){
+    padding: 0 7.5rem;
+  }
 }
 .btn {
   background: #fff;
