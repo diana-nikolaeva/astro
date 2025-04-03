@@ -38,7 +38,9 @@ defineProps(
                 <div class="age">{{spetiality}}</div>
               </div>
             </div>
-            <audio controls src="../assets/audio/audio.mp3"></audio>
+            <audio controls >
+              <source src="../assets/audio/audio.mp3" type="audio/mpeg">
+            </audio>
           </div>
         </div>
       </div>

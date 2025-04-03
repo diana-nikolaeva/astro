@@ -21,7 +21,7 @@ const prev = () => carouselRef.value.prev();
     <div class="container">
       <h2>Истории наших клиентов</h2>
       <div class="stories">
-        <Carousel class="carousel-container" :items-to-show="itemsToShow" :itemsToScroll="1" :gap="20"
+        <Carousel class="carousel-container" :items-to-show="itemsToShow" :itemsToScroll="2" :gap="20"
           ref="carouselRef">
           <Slide v-for="slide in stories" :key="slide.name">
             <storyItem :name="slide.name" :age="slide.age" :question="slide.question" :answer="slide.answer">
@@ -32,8 +32,8 @@ const prev = () => carouselRef.value.prev();
             <CarouselPagination />
             <div class="navigation-wrapper">
               <button class="btn-carousel btn-prev" :class="{ disabled: prevIsBlock }" @click="prev">
-                aaa </button>
-              <button class="btn-carousel btn-next" :class="{ disabled: nextIsBlock }" @click="next">bbb</button>
+                &lt; </button>
+              <button class="btn-carousel btn-next" :class="{ disabled: nextIsBlock }" @click="next"> &gt;</button>
             </div>
 
           </template>

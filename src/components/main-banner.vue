@@ -67,9 +67,14 @@
   margin-right: 2rem;
   display: flex;
   align-items: center;
+  max-width: 5rem;
+  @media  screen and (min-width:800px){
+    max-width: 8.125rem;
+  }
 }
 .logo img{
   height: 2rem;
+  width:100%;
 }
 .logo-descr{
   font-size: .8125rem;

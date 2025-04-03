@@ -16,7 +16,7 @@ const itemsToShow = computed(() => props.isPhone ? 1 : 3);
       <h2>Наши тарологи</h2>
     </div>
 
-    <Carousel class="carousel-container" :items-to-show="itemsToShow">
+    <Carousel class="carousel-container" :items-to-show="itemsToShow" :itemsToScroll="3">
       <Slide v-for="slide in couches" :key="slide.name">
         <cardCouch :count="slide.count" :img="slide.img" :name="slide.name" :skill="slide.skill"
           :speciality="slide.speciality" :star="slide.star"></cardCouch>
