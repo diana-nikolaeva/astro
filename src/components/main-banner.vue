@@ -58,6 +58,7 @@
   padding-top: .5rem;
   display: flex;
   margin-bottom: 3.75rem;
+  align-items: center;
   @media  screen and (min-width:800px) {
     padding-top: 1.875rem;
     margin-bottom: 6.25rem;
