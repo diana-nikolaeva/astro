@@ -1,5 +1,19 @@
-<script setup>
+<script setup lang="ts">
+
 import reviewsBlock from './reviews-block.vue';
+import { onMounted, onBeforeUnmount, ref } from 'vue'
+
+const isPhone = ref(true)
+
+if (typeof window !== 'undefined') {
+  const onResize = () => {
+    isPhone.value = window.innerWidth <= 1000
+  }
+
+  onMounted(() => window.addEventListener('resize', onResize))
+  onBeforeUnmount(() => window.removeEventListener('resize', onResize))
+  onResize()
+}
 </script>
 <template>
   <section>
@@ -35,7 +49,7 @@ import reviewsBlock from './reviews-block.vue';
         </div>
       </div>
       <h2>С чем к нам обращаются</h2>
-      <reviewsBlock></reviewsBlock>
+      <reviewsBlock :is-phone="isPhone"></reviewsBlock>
       <div class="content">Мы понимаем, что у каждого человека есть наболевшая проблема. Вы всегда можете обсудить ее с тарологом.</div>
       <a href="/" class="btn pink">Попробовать бесплатно</a>
       <div class="container-couch">
@@ -100,11 +114,11 @@ h2{
   margin-bottom: 3rem;
 }
 .content{
-  margin: 2rem 0;
+  margin: 4rem 0 2rem 0;
   color: #131314;
   font-size: 17px;
   text-align: center;
-  @media screen and (min-width:800px) {
+  @media screen and (min-width:1000px) {
     width: 60%;
     margin: 2rem auto;
   }
