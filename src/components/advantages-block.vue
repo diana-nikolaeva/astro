@@ -33,7 +33,9 @@ defineProps({ isPhone: Boolean });
 }
 
 h2 {
-  color: black
+  color: black;
+  font-weight: 600;
+  margin-bottom: 2rem;
 }
 
 .carousel-advantage {

@@ -36,6 +36,7 @@ h2{
   color:black;
   margin-top: 80px;
   margin-bottom: 32px;
+  font-weight: 600;
 }
 </style>
 <style>

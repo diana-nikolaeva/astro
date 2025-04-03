@@ -32,7 +32,7 @@ if (typeof window !== 'undefined') {
     <firstConsultation></firstConsultation>
     <ourCouch :is-phone="isPhone"></ourCouch>
     <advantagesBlock :is-phone="isPhone"></advantagesBlock>
-    <ourStory></ourStory>
+    <ourStory :is-phone="isPhone"></ourStory>
     <saleBlock></saleBlock>
   </main>
   <footer>
@@ -59,6 +59,7 @@ if (typeof window !== 'undefined') {
   @media screen and (min-width:800px) {
     padding: 0 3rem;
   }
+
   @media screen and (min-width:1440px) {
     padding: 0 15rem;
   }
